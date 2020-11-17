@@ -2,10 +2,18 @@ var createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const body = require('body-parser')
+const mariadb = require('mariadb');
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
 
 const routes = require('./routes')
+const pool = mariadb.createPool({
+    host : '127.0.0.1',
+    user : 'root',
+    password : '',
+    connectionLimit : 5,
+    database : 'bucket'
+});
 
 const app = express();
 const port = 5000;
