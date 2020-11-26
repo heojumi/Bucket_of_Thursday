@@ -2,7 +2,7 @@ import React from 'react';
 import {Menu} from '../components';
 import './Home.css';
 
-lists =[
+const lists =[
     {
         bid : 1,
         title : 'bucket 1',
@@ -25,7 +25,7 @@ class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
-            lists : [],
+            list : [],
         }
     }
     //Loading 되기 전에 발생하는 이벤트 cycle
