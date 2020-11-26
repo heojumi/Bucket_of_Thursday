@@ -10,7 +10,7 @@ const routes = require('./routes')
 const pool = mariadb.createPool({
     host : '127.0.0.1',
     user : 'root',
-    password : '',
+    password : 'bucket',
     connectionLimit : 5,
     database : 'bucket'
 });
