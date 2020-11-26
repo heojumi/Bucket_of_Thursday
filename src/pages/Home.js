@@ -1,5 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {Menu} from '../components';
+import {Main} from '../pages';
 import './Home.css';
 
 const lists =[
@@ -47,13 +49,13 @@ class Home extends React.Component {
                         <input type="password" placeholder="password"/>
                         <input type="text" placeholder="email address"/>
                         <button>create</button>
-                        <p class="message">Already registered? <a href="#">Sign In</a></p>
+                        <p class="message">Already registered? <a href="join">Sign In</a></p>
                     </form>
                     <form class="login-form">
                         <input type="text" placeholder="username"/>
                         <input type="password" placeholder="password"/>
                         <button onClick={this.postLogin}>login</button>
-                        <p class="message">Not registered? <a href="#">Create an account</a></p>
+                        <p class="message">Not registered? <a href="main">Create an account</a></p>
                     </form>
                 </div>
             </div>
