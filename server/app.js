@@ -6,6 +6,13 @@ const mariadb = require('mariadb');
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
 
+//passport 모듈 설정
+var passport=require('passport');
+var LocalStrategy=require('passport-local').Strategy;
+var session=require('express-session');
+var flash=require('connect-flash');
+
+
 const routes = require('./routes')
 const pool = mariadb.createPool({
     host : '127.0.0.1',
@@ -44,3 +51,15 @@ app.use(function(err, req, res, next) {
 app.listen(port, function(){
     console.log('Listening on port : '+ port);
 });
+
+//passport 세션설정
+app.use(session({
+  secret:'bucketbucket1234',
+  resave:false,
+  saveUninitialized:true
+}))
+
+//passport 사용설정
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
