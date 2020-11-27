@@ -1,8 +1,9 @@
 var createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const body = require('body-parser')
-const mariadb = require('mariadb');
+const body = require('body-parser');
+const cors = require('cors');
+// const mariadb = require('mariadb');
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
 
@@ -11,25 +12,23 @@ var passport=require('passport');
 var LocalStrategy=require('passport-local').Strategy;
 var session=require('express-session');
 var flash=require('connect-flash');
-
-
 const routes = require('./routes')
-const pool = mariadb.createPool({
-    host : '127.0.0.1',
-    user : 'root',
-    password : 'bucket',
-    connectionLimit : 5,
-    database : 'bucket'
-});
+// const pool = mariadb.createPool({
+//     host : '127.0.0.1',
+//     user : 'root',
+//     password : 'bucket',
+//     connectionLimit : 5,
+//     database : 'bucket'
+// });
 
 const app = express();
 const port = 5000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', routes);
 
 // catch 404 and forward to error handler

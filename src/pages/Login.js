@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Menu} from '../components';
-import {Main} from '../pages';
+import {Main} from '.';
 import './Home.css';
 
 const lists =[
@@ -22,7 +22,7 @@ const lists =[
     }
 ]
 
-class Home extends React.Component {
+class Login extends React.Component {
 
     constructor(props) {
         super(props)
@@ -63,4 +63,4 @@ class Home extends React.Component {
     }
 };
 
-export default Home;
+export default Login;
