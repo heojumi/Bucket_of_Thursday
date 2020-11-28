@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 import {axios} from 'axios';
+import {Link} from 'react-router-dom';
+import {Menu} from '../components';
+import {Main} from '.';
+import './Home.css';
+import styled from 'styled-components';
+import { wrap } from 'module';
 
 class Join extends Component {
     
@@ -20,9 +26,19 @@ class Join extends Component {
     
     render(){
         return(
-            <div>
-                <h2>This is Join Page</h2>
-            </div>
+            <div class="login-page">
+            <div class="form">
+                <form class="login-form">
+                    <input type="text" placeholder="ID"/>
+                    <input type="text" placeholder="Name"/>
+                    <input type="text" placeholder="Nickname"/>
+                    <input type="password" placeholder="Password"/>
+                    <input type="text" placeholder="Email address"/>
+                    <button>create</button>
+                    <p class="message">Already registered? <a href="/">Sign In</a></p>
+                </form>
+                </div>
+                </div>
         );
     }   
 }

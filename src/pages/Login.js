@@ -36,6 +36,7 @@ class Login extends React.Component {
     componentDidmount = () => {
 
     }
+   
 
     postLogin = () => {
         console.log('post login');
@@ -52,18 +53,11 @@ class Login extends React.Component {
         return(
             <div class="login-page">
                 <div class="form">
-                    <form class="register-form">
-                        <input type="text" placeholder="name"/>
-                        <input type="password" placeholder="password"/>
-                        <input type="text" placeholder="email address"/>
-                        <button>create</button>
-                        <p class="message">Already registered? <a href="join">Sign In</a></p>
-                    </form>
                     <form class="login-form">
-                        <input type="text" placeholder="username"/>
-                        <input type="password" placeholder="password"/>
+                        <input type="text" placeholder="ID"/>
+                        <input type="password" placeholder="Password"/>
                         <button onClick={this.postLogin}>login</button>
-                        <p class="message">Not registered? <a href="main">Create an account</a></p>
+                        <p class="message">Not registered? <a href="join">Create an account</a></p>
                     </form>
                 </div>
                 {/* 구글로그인 구현 */}
