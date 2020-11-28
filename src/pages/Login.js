@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom';
 import {Menu} from '../components';
 import {Main} from '.';
 import './Home.css';
-
+import {GoogleLogin} from 'react-google-login'
+import styled from 'styled-components';
+import { wrap } from 'module';
 const lists =[
     {
         bid : 1,
@@ -39,7 +41,13 @@ class Login extends React.Component {
         console.log('post login');
         alert('login');
     }
-
+// 구글로그인 구현시 보내주는 데이터
+    responseGoogle=(res) => {
+        console.log(res);
+    }
+    responseFail=(err) => {
+        console.log(err);
+    }
     render(){
         return(
             <div class="login-page">
@@ -58,9 +66,17 @@ class Login extends React.Component {
                         <p class="message">Not registered? <a href="main">Create an account</a></p>
                     </form>
                 </div>
+                {/* 구글로그인 구현 */}
+                <div>
+                        <GoogleLogin
+                            clientId='385363013494-8rquobiju2nk4ekkh0m8i6biqvmu16ov.apps.googleusercontent.com'//{process.env.REACT_APP_Google}
+                            buttonText="Google"
+                            onSuccess={this.responseGoogle}
+                            onFailure={this.responseFail}
+                            />
+                </div>
             </div>
         );
     }
 };
-
 export default Login;
