@@ -59,6 +59,6 @@ app.use(session({
 }))
 
 //passport 사용설정
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
