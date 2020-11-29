@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import {Bucket} from '../components';
 class Main extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            text : '',
-            text2 : '',
+            lists : [],
         }
     }
 
@@ -17,8 +17,7 @@ class Main extends Component {
     getMain = async() =>{
         await axios.get("http://localhost:5000/")
         .then((res)=>{
-            console.log(res)
-            this.setState({text:res.data.text, text2:res.data.text2});
+            this.setState({lists:res.data.lists});
         }).catch((err)=>{
             console.log(err);
         });
@@ -27,8 +26,8 @@ class Main extends Component {
     render(){
         return(
             <div>
-                <h2>Main Text : {this.state.text}</h2>
-                {this.state.text2}
+                <h2>Main Text</h2>
+                {this.state.lists.map((val, i)=>{return <Bucket title={val.title}/>})}
             </div>
         );
     }
