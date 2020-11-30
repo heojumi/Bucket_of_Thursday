@@ -38,7 +38,7 @@ class Join extends Component {
                     <p class="message">Already registered? <a href="/">Sign In</a></p>
                 </form>
                 </div>
-                </div>
+            </div>
         );
     }   
 }

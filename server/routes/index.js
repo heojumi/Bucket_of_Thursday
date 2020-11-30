@@ -27,7 +27,9 @@ const lists =[
 ]
 
 router.get('/', function(req, res){
-  res.status(200).send({lists : lists});
+  res.send({
+    status : 200,
+    lists : lists});
 })
 
 module.exports = router;

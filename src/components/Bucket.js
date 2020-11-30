@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 
 const Bucket = (props) =>{
     return(
-        <div>
-            <h2>{props.title}</h2>
+        <div style={{color : 'red'}}>
+            <h2>Title : {props.title}</h2>
         </div>
     );
 }

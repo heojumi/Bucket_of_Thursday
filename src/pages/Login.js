@@ -32,12 +32,17 @@ class Login extends React.Component {
         super(props)
         this.state ={
             list : [],
+            ID : '',
+            password : '',
         }
     }
 
     //axios
     findUser = async () => {
-        axios.get("/")
+        axios.post("/login", {
+            Id : this.state.ID,
+            password : this.state.password,
+        })
           .then(({ data }) => {
             this.setState({ 
               loading: true,
@@ -58,8 +63,7 @@ class Login extends React.Component {
 
 
     postLogin = () => {
-        console.log('post login');
-        alert('login');
+        
     }
 // 구글로그인 구현시 보내주는 데이터
     responseGoogle=(res) => {
@@ -73,7 +77,7 @@ class Login extends React.Component {
             <div class="login-page">
                 <div class="form">
                     <form class="login-form">
-                        <input type="text" placeholder="ID"/>
+                        <input type="text" placeholder="ID" />
                         <input type="password" placeholder="Password"/>
                         <button onClick={this.postLogin}>login</button>
                         <p class="message">Not registered? <a href="join">Create an account</a></p>
