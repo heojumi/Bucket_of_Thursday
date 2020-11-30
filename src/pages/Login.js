@@ -6,6 +6,8 @@ import './Home.css';
 import {GoogleLogin} from 'react-google-login'
 import styled from 'styled-components';
 import { wrap } from 'module';
+import axios from 'axios';
+
 const lists =[
     {
         bid : 1,
@@ -32,11 +34,28 @@ class Login extends React.Component {
             list : [],
         }
     }
+
+    //axios
+    findUser = async () => {
+        axios.get("/")
+          .then(({ data }) => {
+            this.setState({ 
+              loading: true,
+            });
+          })
+          .catch(e => {  // API 호출이 실패한 경우
+            console.error(e);  
+            this.setState({  
+              loading: false
+            });
+          });
+      };
+
     //Loading 되기 전에 발생하는 이벤트 cycle
     componentDidmount = () => {
-
+        this.findUser();
     }
-   
+
 
     postLogin = () => {
         console.log('post login');
