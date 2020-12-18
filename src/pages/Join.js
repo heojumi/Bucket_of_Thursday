@@ -29,11 +29,11 @@ class Join extends Component {
             <div class="login-page">
             <div class="form">
                 <form class="login-form">
-                    <input type="text" placeholder="ID"/>
-                    <input type="text" placeholder="Name"/>
-                    <input type="text" placeholder="Nickname"/>
-                    <input type="password" placeholder="Password"/>
-                    <input type="text" placeholder="Email address"/>
+                    <input type="text" name="id" placeholder="ID"/>
+                    <input type="text" name="name" placeholder="Name"/>
+                    <input type="text" name="nickname" placeholder="Nickname"/>
+                    <input type="password" name="password" placeholder="Password"/>
+                    <input type="text" name="email" placeholder="Email address"/>
                     <button>create</button>
                     <p class="message">Already registered? <a href="/">Sign In</a></p>
                 </form>
