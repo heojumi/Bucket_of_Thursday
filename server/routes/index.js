@@ -3,10 +3,12 @@ const router = express.Router();
 const main = require('./main.js');
 const user = require('./users.js');
 const join = require('./join.js');
+const login=require('./login.js');
 
 router.use('/main', main);
 router.use('/user', user);
 router.use('/join', join);
+router.use('/login',login);
 
 const lists =[
   {

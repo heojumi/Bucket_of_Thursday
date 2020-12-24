@@ -4,15 +4,15 @@ const router=express.Router();
 const path=require('path');
 const mariadb=require('mariadb/callback');
 const con=require('../bucket_data');
-
+var exist;
 var passport=require('passport');
 var LocalStrategy=require('passport-local').Strategy;
 
 //router설정
-router.get('/',function(req,res){
-    console.log('join page called');
-    res.render('pages/Join');
-})
+// router.get('/',function(req,res){
+//     console.log('join page called');
+//     res.render('pages/Join');
+// })
 
 //serialize, deserialize 설정 (세션에 값 저장)
 passport.serializeUser(function(user,done){
@@ -40,11 +40,13 @@ passport.use('local-join', new LocalStrategy({
             if(err) return done(err);
             if(rows.length){
                 console.log('existed user');
+                exist=true;
                 //res.status(403).send({status:403,message:'이미 존재하는 계정'});
                 return done(null,false,{message:'이미 존재하는 이메일'});
             }else{
                 con.query('INSERT INTO member_tb (id,passwd,email,name,nickname) values (?,?,?,?,?)',[paramId,password,email,paramName,paramNickname],function(err,rows){
                     if(err) throw err;
+                    exist=false;
                     return done(null,{'email':email,'nickname':nickname});
                 })
             }
@@ -52,10 +54,23 @@ passport.use('local-join', new LocalStrategy({
 }))
 
 //authenticate
-router.post('/',passport.authenticate('local-join',{
-    successRedirect:'/main',
-    failureRedirect:'/join',
-    failureFlash:true  
-}))
+// router.post('/',passport.authenticate('local-join',{
+//     successRedirect:'/main',
+//     failureRedirect:'/join',
+//     failureFlash:true  
+// }))
+
+router.post('/',function(req,res,next){
+    passport.authenticate('local-join',function(err,user,info){
+        if(err)
+        return next(err);
+        if(exist==true){
+         res.status(403).send({status:403,message:'이미 존재하는 이메일 계정입니다.'});
+        }
+        if(exist==false)
+        return res.status(200).send({status:200,message:'join success'});
+    })(req,res,next);
+})
+
 
 module.exports=router;
